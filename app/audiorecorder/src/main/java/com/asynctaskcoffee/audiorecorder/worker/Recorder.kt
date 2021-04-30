@@ -9,26 +9,20 @@ class Recorder(audioRecordListener: AudioRecordListener?) {
 
     private var recorder: MediaRecorder? = null
     private var audioRecordListener: AudioRecordListener? = null
-    private var fileName: String? = null
-    private var localPath = ""
+
+    private var outputFile: String? = null
 
     private var isRecording = false
 
-    fun setFileName(fileName: String?) {
-        this.fileName = fileName
+    fun setOutputFile(fileName: String?) {
+        this.outputFile = fileName
     }
 
     fun startRecord() {
         recorder = MediaRecorder()
         recorder!!.setAudioSource(MediaRecorder.AudioSource.MIC)
         recorder!!.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4)
-        localPath = Environment.getExternalStorageDirectory().absolutePath
-        localPath += if (fileName == null) {
-            "/Recorder_" + UUID.randomUUID().toString() + ".m4a"
-        } else {
-            fileName
-        }
-        recorder!!.setOutputFile(localPath)
+        recorder!!.setOutputFile(outputFile)
         recorder!!.setAudioEncoder(MediaRecorder.AudioEncoder.AAC)
         try {
             recorder!!.prepare()
@@ -55,7 +49,7 @@ class Recorder(audioRecordListener: AudioRecordListener?) {
             recorder!!.stop()
             recorder!!.release()
             recorder = null
-            reflectRecord(localPath)
+            reflectRecord(outputFile)
         } catch (e: Exception) {
             e.printStackTrace()
             reflectError(e.toString())
