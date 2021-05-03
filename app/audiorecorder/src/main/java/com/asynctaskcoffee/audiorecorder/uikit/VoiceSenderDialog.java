@@ -94,8 +94,8 @@ public class VoiceSenderDialog extends BottomSheetDialogFragment implements View
         audioSend.setImageDrawable(requireActivity().getDrawable(iconsObj.ic_send_circle));
     }
 
-    public void setFileName(String fileName) {
-        if (recorder != null) recorder.setFileName(fileName);
+    public void setOutputFile(String fileName) {
+        if (recorder != null) recorder.setOutputFile(fileName);
     }
 
     @SuppressLint("ClickableViewAccessibility")

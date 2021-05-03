@@ -259,8 +259,8 @@ class ButtonUsageActivity : AppCompatActivity(), AudioRecordListener {
 ##### Change Record Path
 
 ```kotlin
-fun setFileName(fileName: String?) {
-   this.fileName = fileName
+fun setOutputFile(fileName: String?) {
+   this.setOutputFile = setOutputFile
 }
 ```
 

@@ -38,8 +38,8 @@ class RecordButton : FrameLayout, AudioRecordListener {
         setupVisualComponents(context)
     }
 
-    fun setFileName(fileName: String?) {
-        if (recorder != null) recorder!!.setFileName(fileName)
+    fun setOutputFile(fileName: String?) {
+        if (recorder != null) recorder!!.setOutputFile(fileName)
     }
 
     var marginIn30Dp = TypedValue.applyDimension(
